@@ -10,6 +10,10 @@ public class Customer {
     this.cashOnHand = cashOnHand;
   }
 
+  public void purchaseCar(Vehicle vehicle, Employee employee, boolean finance) {
+    employee.handleCustomer(this, finance, vehicle);
+  }
+
   public String getName() {
     return name;
   }
@@ -36,7 +40,12 @@ public class Customer {
     this.cashOnHand = cashOnHand;
   }
 
-  public void purchaseCar(Vehicle vehicle, Employee employee, boolean finance) {
-    employee.handleCustomer(this, finance, vehicle);
+  @Override
+  public String toString() {
+    return "Customer{" +
+            "name='" + name + '\'' +
+            ", address='" + address + '\'' +
+            ", cashOnHand=" + cashOnHand +
+            '}';
   }
 }

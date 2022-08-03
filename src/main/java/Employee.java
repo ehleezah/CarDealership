@@ -8,22 +8,6 @@ public class Employee {
     this.lastName = lastName;
   }
 
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-
-  public String getLastName() {
-    return lastName;
-  }
-
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
-
   public void handleCustomer(Customer customer, boolean finance, Vehicle vehicle) {
     if (finance) {
       double loanAmount = vehicle.getPrice() - customer.getCashOnHand();
@@ -44,6 +28,30 @@ public class Employee {
 
 
   private void processTransaction(Customer customer, Vehicle vehicle) {
-    System.out.println(String.format("Customer %s has purchased the %s vehicle for the price %s.", customer.getName(), vehicle.getMake(), vehicle.getPrice()));
+    System.out.println(String.format("%s has purchased the %s vehicle.", customer, vehicle));
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  @Override
+  public String toString() {
+    return "Employee{" +
+            "firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            '}';
   }
 }
