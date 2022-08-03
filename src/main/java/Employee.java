@@ -26,22 +26,24 @@ public class Employee {
 
   public void handleCustomer(Customer customer, boolean finance, Vehicle vehicle) {
     if (finance) {
-      runCreditHistory(customer, customer.getCashOnHand());
+      double loanAmount = vehicle.getPrice() - customer.getCashOnHand();
+      runCreditHistory(customer, loanAmount);
     }
     else if (vehicle.getPrice() <= customer.getCashOnHand()) {
       processTransaction(customer, vehicle);
     }
     else {
-      System.out.println("Sorry we cannot process transaction! Please bring more money...");
+      System.out.println("Sorry we cannot process transaction! Please bring more money to purchase the vehicle.");
     }
   }
 
   private void runCreditHistory(Customer customer, double loanAmount) {
-    System.out.println(String.format("Successfully ran credit history for customer %s for loan amount of %s", customer.getName(), customer.getCashOnHand()));
+    System.out.println(String.format("Successfully ran credit history for customer %s for loan amount of %s", customer.getName(), loanAmount));
+    System.out.println("Customer has been approved to purchase the vehicle.");
   }
 
 
   private void processTransaction(Customer customer, Vehicle vehicle) {
-    System.out.println(String.format("Successfully processed transaction for customer %s for %s vehicle..", customer.getName(), vehicle.getMake()));
+    System.out.println(String.format("Customer %s has purchased the %s vehicle for the price %s.", customer.getName(), vehicle.getMake(), vehicle.getPrice()));
   }
 }

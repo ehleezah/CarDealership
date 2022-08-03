@@ -37,13 +37,6 @@ public class Customer {
   }
 
   public void purchaseCar(Vehicle vehicle, Employee employee, boolean finance) {
-    if (finance) {
-      System.out.println(String.format("Purchased a vehicle model %s of make %s of year %s financed at %s from employee %s %s.",
-              vehicle.getModel(), vehicle.getMake(), vehicle.getYear(), vehicle.getPrice(), employee.getFirstName(), employee.getLastName()));
-    }
-    else {
-      System.out.println("Young money");
-    }
-
+    employee.handleCustomer(this, finance, vehicle);
   }
 }
